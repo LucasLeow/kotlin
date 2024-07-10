@@ -1,3 +1,35 @@
 ========================================================================================================================
 Intro to Kotlin
 ========================================================================================================================
+
+    - created by JetBrains
+    - can compile to run on JVM + Javascript VM
+    - in future, possible to compile kotlin to machine code (don't need JVM at all)
+
+    - can write single Kotlin class & add to existing Java app
+    - can write kotlin apps & run on JVM
+    - named after an island in Russia because dev team resides there
+
+    * runs anywhere JVM can run
+    * statically typed (need to type declare variables) (i.e. compile time declaration)
+    * object-oriented + functional programming (fn as first-class citizens)
+    * kotlin is more concise than java
+
+
+========================================================================================================================
+4 Kotlin Guiding Principles
+========================================================================================================================
+
+    1. Conciseness
+        - much less code needed to be written compared to Java
+        - initially may write more verbose, but over time, may start to be more concise
+
+    2. Safety
+        - from null-pointer exceptions
+
+    3. Pragmatic
+        - designed to solve problem, not for research
+        - more than 1 way to perform similar action
+
+    4. Interoperability
+        - interoperable with Java
