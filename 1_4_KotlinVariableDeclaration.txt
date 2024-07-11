@@ -22,3 +22,22 @@ Kotlin Variable declaration
 
     * variable type is fixed at declaration time
         - when declare variable as Int, cannot reassign string to variable
+
+
+========================================================================================================================
+Kotlin Variable Type Aliases
+========================================================================================================================
+
+    - introduced in Kotlin 1.1 onwards
+    - Alias name to existing data type
+    - eg: want "Int" dtype to be called int
+
+
+    eg:
+    @SinceKotlin("1.1") public typealias StringBuilder = java.lang.StringBuilder
+
+    typealias EmployeeSet = Set<Employee>
+
+    typealias <desired_type_name> = <actual_type>
+
+    * only can use locally within file, else need to import in other files
