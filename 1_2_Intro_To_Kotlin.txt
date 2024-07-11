@@ -46,3 +46,18 @@ How Kotlin Compiles
 
     * can write code outside of classes in Kotlin
         - compiler will auto create class
+
+========================================================================================================================
+Kotlin vs Java
+========================================================================================================================
+
+    - kotlin don't need ';'
+    - kotlin use plenty of wrappers (eg: println())
+    - kotlin have hard (cannot use keyword as name at all) & soft (can use but not recommended) keywords
+    - can use arr[] slicing in kotlin but not in Java
+    - kotlin has its own 'String' class implementation (not entirely similar to java.lang.String)
+    - kotlin does not distinguish between checked & unchecked exception (all exceptions unchecked)
+    - kotlin does not have ternary operator
+    - for loop syntax does not exist in kotlin
+    - kotlin does not have static keyword (syntactically, but within compiler, it still exist)
+    - kotlin does not require new keyword for new instance
