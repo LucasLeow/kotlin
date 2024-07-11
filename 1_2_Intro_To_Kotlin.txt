@@ -33,3 +33,16 @@ Intro to Kotlin
 
     4. Interoperability
         - interoperable with Java
+
+
+========================================================================================================================
+How Kotlin Compiles
+========================================================================================================================
+
+    - Kotlin files (.kt) -> Kotlin compiler -> bytecode (.class)
+    - JVM can execute .class files, similar to java .class files
+    - need Kotlin runtime library + JRE
+    - when distributing Kolin app, need to distribute Kotline Runtime Library + JRE
+
+    * can write code outside of classes in Kotlin
+        - compiler will auto create class
