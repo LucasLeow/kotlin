@@ -1,5 +1,18 @@
-================================================================================================================================
+=======================================================================================================================
 IntelliJ Setup for Kotlin
-================================================================================================================================
+=======================================================================================================================
 
     1. install & enable plug-in for kotlin (should be installed & enabled by default)
+
+
+=======================================================================================================================
+IntelliJ Java to Kotlin conversion
+=======================================================================================================================
+
+    1. Create desired kotlin class
+    2. Copy Java code to kotlin class
+        (pop-up asking for conversion of java to kotlin) -> click yes
+        - converter is designed to use more verbose kotlin code
+        - can further simplify kotlin code if desired
+        - sometimes, conversion may not occur the way u want it
+        - good starting point to test conversion, else, manually convert
