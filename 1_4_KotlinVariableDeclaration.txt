@@ -1,0 +1,24 @@
+========================================================================================================================
+Kotlin Variable declaration
+========================================================================================================================
+
+    "var" - can reassign value
+    "val" - immutable, only can init (recommended to use this unless really need to change value)
+        - immutable variable storing instance of class does not mean instance variables of a class is immutable
+        eg: val employee1 = Employee("Lucas", 500)
+        employee1.name = "Lucas New Name" // even though employee1 immutable, instance variable "name" is not
+
+    eg:
+
+        val <var_name>: <d_type> // declaration
+        or
+        val <var_name> = 25 // direct assignment
+        or
+        val <var_name>: <d_type> = 25 // declaration & assignment (not recommended)
+            - unless want very specific d_type
+
+            eg:
+            val number: Short = 25;
+
+    * variable type is fixed at declaration time
+        - when declare variable as Int, cannot reassign string to variable
