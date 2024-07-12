@@ -15,6 +15,11 @@ Intro to Kotlin
     * object-oriented + functional programming (fn as first-class citizens)
     * kotlin is more concise than java
 
+    * everything in Kotlin is a class (no dtype that are lower-case)
+
+    * possible to call java functions / methods within kotlin files
+        - kotlin primitives are converted to java primitives under the hood
+        (altho kotlin only have classes as dtypes)
 
 ========================================================================================================================
 4 Kotlin Guiding Principles
@@ -23,6 +28,7 @@ Intro to Kotlin
     1. Conciseness
         - much less code needed to be written compared to Java
         - initially may write more verbose, but over time, may start to be more concise
+        - write as concise as possible for kotlin (guideline)
 
     2. Safety
         - from null-pointer exceptions

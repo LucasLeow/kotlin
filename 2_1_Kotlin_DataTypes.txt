@@ -1,0 +1,104 @@
+========================================================================================================================
+Kotlin Data types
+========================================================================================================================
+
+    - everything is a class in Kotlin
+    - there are not lower-cased data types in Kotlin
+
+    * Kotlin does not perform auto-widening
+        - cannot assign Short to Int or Int to Long
+        - cannot assign Float to Double
+        * need to use toFloat() | toInt() etc. to cast
+
+
+
+========================================================================================================================
+Whole numbers (Int)
+========================================================================================================================
+
+    - Int (default declaration if no type provided)
+    - Byte
+    - Short
+    - Long (have to include 'L' suffix if no declaration)
+        eg:
+        val myLong = 22L
+        val myLong: Long = 22
+
+    * No auto widening of dtypes in Kotlin
+        eg: cannot store Int within Long (type mismatch)
+
+        eg:
+
+            myLong = myInt // invalid, type mismatch
+            myLong = myInt.toLong() // valid, type converted
+
+            val myByte: Byte = 111
+            var myShort: Short
+            myShort = myByte.toShort() // valid
+
+========================================================================================================================
+Floats
+========================================================================================================================
+
+    - Double (default declaration if no type specified)
+    - Float (have to use 'f' suffix if no declaration)
+
+========================================================================================================================
+Char
+========================================================================================================================
+
+    * cannot assign integer to Char dtype (unlike Java)
+
+
+    val char = 'b'
+    val myChar: Char = 65.toChar() // 'A'
+
+========================================================================================================================
+Boolean
+========================================================================================================================
+
+    - true
+    - false
+
+========================================================================================================================
+Any, Unit, Nothing
+========================================================================================================================
+
+    - Any (root of all Kotlin object) (similar to Object in Java)
+        - can be used to store any obj in Kotlin
+
+    - Unit (similar to void in Java)
+        - void in Java returns nothing
+        - Unit in Kotlin returns singleton instance of Unit
+
+    - Nothing (subclass of every class)
+        - can use Nothing for any class
+        - use when a function is never gonna return
+
+    val anything: Any
+
+========================================================================================================================
+Type Checking
+========================================================================================================================
+
+    - use 'is' instead of 'instanceof'
+    - '!is' for its counter operation
+
+    - smart casting : when type checking a variable, can treat the variable as being casted if true
+
+    eg:
+
+        val myPerson: Any = Employee("Lucas", 1)
+
+        if (myPerson is Employee) {
+            println("myPerson is an instance of Employee!")
+        }
+
+========================================================================================================================
+Type Casting
+========================================================================================================================
+
+    - using 'as' keyword
+
+    val string1: String = "This is string 1"
+    val string2: String = string1 as String // this works just fine
