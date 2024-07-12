@@ -1,0 +1,31 @@
+========================================================================================================================
+Structural vs Referential Equality
+========================================================================================================================
+
+    '==': (structural equality) in kotlin checks for structural equality
+        - .equals() also structural equality in kotlin
+
+    '===': (referential equality)
+        - .equals() in java checks for referential equality
+
+    '!=' : structural inequality
+    '!==' : referential inequality
+
+
+    fun main(args: Array<String>) {
+
+        val employee1 = Employee("Mary", 1)
+        val employee2 = Employee("John", 2)
+        val employee3 = Employee("John", 2)
+
+        println(employee1 == employee2) // false
+        println(employee2 == employee3) // true
+        println(employee2 === employee3) // false
+
+        println(employee1.equals(employee2)) // false
+        println(employee2.equals(employee3)) // true
+
+        // in java, its false, false, false , true
+
+    }
+

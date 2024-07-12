@@ -36,8 +36,10 @@ Kotlin Variable Type Aliases
     eg:
     @SinceKotlin("1.1") public typealias StringBuilder = java.lang.StringBuilder
 
-    typealias EmployeeSet = Set<Employee>
-
     typealias <desired_type_name> = <actual_type>
+
+    eg:
+
+        typealias EmployeeSet = Set<Employee>
 
     * only can use locally within file, else need to import in other files
