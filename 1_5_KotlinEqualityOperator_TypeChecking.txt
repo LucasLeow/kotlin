@@ -29,3 +29,29 @@ Structural vs Referential Equality
 
     }
 
+
+========================================================================================================================
+Type Checking
+========================================================================================================================
+
+    - use 'is' instead of 'instanceof'
+    - '!is' for its counter operation
+
+    - smart casting : when type checking a variable, can treat the variable as being casted if true
+
+    eg:
+
+        val myPerson: Any = Employee("Lucas", 1)
+
+        if (myPerson is Employee) {
+            println("myPerson is an instance of Employee!")
+        }
+
+========================================================================================================================
+Type Casting
+========================================================================================================================
+
+    - using 'as' keyword
+
+    val string1: String = "This is string 1"
+    val string2: String = string1 as String // this works just fine

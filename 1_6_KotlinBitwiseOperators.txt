@@ -1,0 +1,20 @@
+========================================================================================================================
+Kotlin bitwise operator
+========================================================================================================================
+
+    - bitwise operators are used to perform bit operations
+
+    (start with 0x to indicate binary numbers)
+    val x = 0x1011
+    val y = 0x1110
+
+    Java:
+        or : |
+        and : &
+        xor : ^
+
+
+    Kotlin: (spell out bitwise operators)
+        or : or
+        and : and
+        xor : xor
