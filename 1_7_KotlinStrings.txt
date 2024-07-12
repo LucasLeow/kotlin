@@ -1,0 +1,42 @@
+========================================================================================================================
+String templates
+========================================================================================================================
+
+    - using '$<var_name>' within string for just variable value
+    - if want to use '$' in string, need to escape character
+
+    - if want to perform expression, need to use {}
+
+
+    eg:
+
+    // Escaping $ character to show '$'
+        println("The shoe cost: $$shoeCost")
+
+
+    // Using variable value
+        "(Employee name: $name) | (Employee id: $id)"
+
+
+    // Evaluating expression within template
+        println("The shoes after discount is: $${shoeCost * discount}")
+        println("The employee's id is ${employee1.id}")
+
+========================================================================================================================
+Raw Strings (Multi-line strings)
+========================================================================================================================
+
+    // raw strings (allow for single escape character, else need \\ in normal strings
+        val filePath = """c:\somedir\somedir2"""
+
+    // multi-line strings
+
+        val multiLine = """
+            Sets and Functions
+            Floor and Ceiling Functions
+            Power and Log Functions
+        """
+
+        println(multiLine.trimMargin(<delimiter>))
+            - trimMargin will remove all white space before delimiter
+            - default delimiter is '|'
