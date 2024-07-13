@@ -1,3 +1,114 @@
 ========================================================================================================================
 Kotlin Arrays
 ========================================================================================================================
+
+    - also a class in Kotlin 'Array' (Collections class)
+
+    - array indexing is available in kotlin
+        println(myArr[0]) // is valid
+
+    - if values provided initially, then don't need to provide type (compiler will perform type inference)
+    - best practice to include type for Array
+
+    - can have different dtypes within Array
+
+    * cannot call java method taking in array of primitives in kotlin
+        - need to use special Array primitive in Kotlin
+
+========================================================================================================================
+Method 1 (arraysOf)
+========================================================================================================================
+
+    - good for init simple array with fixed starting values
+
+    val names = arrayOf("John", "Bob", "Michael")
+    val longsArr = arraysOf<Long>(1, 2, 3, 4)
+
+    val mixedArray = arrayOf("hello", 22, BigDecimal(10.5), 'a')
+
+    println(mixedArray is Array<Any>)
+
+    println(longsArr is Array<Long>)
+
+========================================================================================================================
+Method 2 (using Array constructor + lambda expression)
+========================================================================================================================
+
+    - good for including logic + iteration to init arrays
+
+    var someArray: Array<Int> // declaring reference to Array without initial values
+    someArray = arrayOf(1, 2, 3, 4)
+    someArray = Array(6) {i -> (i+1) * 10} // init with 10, 20, 30, 40, 50, 60
+
+    // 16 is the size of Array
+    val evenNumbers = Arrays(16) {
+        idx -> idx * 2 // return value will be stored within Array
+    }
+
+    val bigArray = Array(100000) {
+        i -> i + 1 // init array with value from 1 to 100000
+    }
+
+    val allZeroes = Array(10) {
+        0
+    }
+
+    for (num in evenNumbers) {
+        println(num)
+    }
+
+========================================================================================================================
+Special Primitive Array Classes
+========================================================================================================================
+
+    - provides performance boost but only allow specified dtype to be stored within Array
+
+    - intArrayOf(1, 2, 3)
+
+    - allows Array to be passed as argument to Java methods taking in primitive Arrays
+
+    ----------------------------------------------------------------------------------------------------------------
+                eg:
+
+                class DummyClass {
+                    public void printNumbers(int[] intArr) {} // takes in primitive int Array in java
+                }
+
+
+                val myKotlinRegularArray = arrayOf(1, 2, 3)
+                DummyClass().printNumbers(myKotlinRegularArray.toIntArray())
+
+                val myKotlinIntArray = intArrayOf(1, 2, 3)
+                DummyClass().printNumbers(myKotlinIntArray)
+
+                val convertedRegularArray: Array<Int> = myKotlinIntArray.toTypedArray()
+
+    ----------------------------------------------------------------------------------------------------------------
+
+        Primitive-type array : Equivalent in Java
+        BooleanArray : boolean[]
+        ByteArray : byte[]
+        CharArray : char[]
+        DoubleArray : double[]
+        FloatArray : float[]
+        IntArray : int[]
+        LongArray : long[]
+        ShortArray : short[]
+
+        var somePrimitiveArray = IntArray(5) // init with default values from java if no values provided
+            - for IntArray, default value is 0
+            - for BooleanArray, default is false etc.
+
+========================================================================================================================
+Nested Arrays
+========================================================================================================================
+
+    val twoDArray = Array(2) {
+        Array<Int>)(2) {i}
+    }
+
+    val threeDArray = Array(3) {
+        Array<Int>(3) {
+            Array<Int>(3) { 0 }
+        }
+    }
