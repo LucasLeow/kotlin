@@ -2,8 +2,12 @@
 Structural vs Referential Equality
 ========================================================================================================================
 
+    * equality operator is null-safe, meaning it checks for null under the hood
+        - no need to implement null checks when performing equality check in Kotlin
+
     '==': (structural equality) in kotlin checks for structural equality
         - .equals() also structural equality in kotlin
+        - structural = checks for value equality instead of reference equality
 
     '===': (referential equality)
         - .equals() in java checks for referential equality
