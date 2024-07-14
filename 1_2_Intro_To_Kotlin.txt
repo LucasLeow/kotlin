@@ -21,6 +21,7 @@ Intro to Kotlin
         - kotlin primitives are converted to java primitives under the hood
         (altho kotlin only have classes as dtypes)
 
+
 ========================================================================================================================
 4 Kotlin Guiding Principles
 ========================================================================================================================
@@ -29,6 +30,7 @@ Intro to Kotlin
         - much less code needed to be written compared to Java
         - initially may write more verbose, but over time, may start to be more concise
         - write as concise as possible for kotlin (guideline)
+        - sometimes not possible to be concise, then verbose is fine (using 5 if conditions to check for stuff for eg)
 
     2. Safety
         - from null-pointer exceptions

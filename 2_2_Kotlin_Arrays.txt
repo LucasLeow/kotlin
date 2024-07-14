@@ -85,6 +85,8 @@ Special Primitive Array Classes
 
     ----------------------------------------------------------------------------------------------------------------
 
+        * compiler will initialize default values when using primitive-type arrays
+
         Primitive-type array : Equivalent in Java
         BooleanArray : boolean[]
         ByteArray : byte[]
@@ -112,3 +114,11 @@ Nested Arrays
             Array<Int>(3) { 0 }
         }
     }
+
+========================================================================================================================
+Array of Nulls
+========================================================================================================================
+
+    - need to use arrayOfNulls
+
+    val nullableInts = arrayOfNulls<Int>(5)
