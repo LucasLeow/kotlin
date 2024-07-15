@@ -16,6 +16,17 @@ Structural vs Referential Equality
     '!==' : referential inequality
 
 
+========================================================================================================================
+    .equals() - referential equality for normal classes
+    emp1 == emp2 (calls the .equals() under the hood)
+
+    .equals() - structural equality for data classes
+    car1 == car2 (calls the .equals() under the hood)
+
+    * can override .equals() within class to make custom comparison between desired instance properties
+        - by default, structural equality will check for all properties equal
+========================================================================================================================
+
     fun main(args: Array<String>) {
 
         val employee1 = Employee("Mary", 1)

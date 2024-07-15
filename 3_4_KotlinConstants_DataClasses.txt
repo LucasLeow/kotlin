@@ -1,0 +1,53 @@
+========================================================================================================================
+Constants
+========================================================================================================================
+
+    - dont have to create class to add constants
+    - can just add as top-level constants
+
+    val MY_CONSTANT: Int = 100 // val to be immutable, default to be public
+
+    fun main(args: Array<String>) {
+        println(MY_CONSTANT)
+    }
+
+========================================================================================================================
+Data Classes
+========================================================================================================================
+
+    - special type of class to store state and nothing else
+        - only contain fields, setters & getters logic
+
+    - data class have extra functionality from Kotlin
+
+        - toString()
+
+        - .equals() & .hashcode()
+            - .equals() is structural equality for data classes by default
+            - .equals() is referential equality for normal classes by default
+                eg: car1 == car2 (calls the .equals() under the hood)
+
+        - .copy()
+            eg: car3 = car1.copy(year=2016, color="green") // create a new car instance with some property modified
+                - property name must be similar to the 1 declared within data class
+
+    * can override method as required
+
+    * can declare additional properties outside of primary constructor
+        - will not have extra functionality methods created for those properties
+
+    Requirements for Data classes:
+        - primary constructor at least 1 parameter
+        - all primary constructors params must be marked with 'val' or 'var'
+        - cannot be abstract, sealed or have inner classes
+
+    eg:
+
+        fun main(args: Array<String>) {
+            val car = Car("blue", "Toyota", 2015)
+            println(car) // will have nicely formatted toString printed instead of reference to memory
+        }
+
+        data class Car(val color: String, val model: String, val year: Int) {
+
+        }

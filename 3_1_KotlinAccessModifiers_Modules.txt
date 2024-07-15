@@ -47,7 +47,7 @@ Kotlin compilation of access modifier (to JVM)
             - any Java code can access internal member of Kotlin (that was previously marked internal)
 
 ========================================================================================================================
-Kotlin Module
+Kotlin Modules
 ========================================================================================================================
 
     - group of kotlin files compiled together
