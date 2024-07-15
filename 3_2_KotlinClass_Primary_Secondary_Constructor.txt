@@ -4,7 +4,8 @@ Kotlin Classes
 
     - all classes are public & final by default
 
-    * constructor declared outside braces is known as primary constructor
+    * constructor declared beside class name is the primary constructor
+    * constructor declared within class braces is the secondary constructor
 
     - init block is not constructor
         - executes when instance created
@@ -13,10 +14,8 @@ Kotlin Classes
         - can have multiple init block within single class
 
 
-
-
 ========================================================================================================================
-Method 1 of primary constructor for Kotlin Classes (long way)(not recommended)
+Method 1 of primary constructor (long way)(not recommended)
 ========================================================================================================================
 
     class Employee constructor(firstName: String) {
@@ -29,7 +28,7 @@ Method 1 of primary constructor for Kotlin Classes (long way)(not recommended)
     }
 
 ========================================================================================================================
-Method 2 of primary constructor for Kotlin classes (without init block) (direct init)
+Method 2 of primary constructor (without init block)
 ========================================================================================================================
 
     class Employee constructor(firstName: String) {
@@ -37,17 +36,21 @@ Method 2 of primary constructor for Kotlin classes (without init block) (direct 
     }
 
 ========================================================================================================================
-Method 3 of primary constructor for Kotlin classes (direct init in constructor arg)
+Method 3 of primary constructor (direct init in primary constructor) (recommended)
 ========================================================================================================================
 
-    * can even exclude the 'constructor' keyword
-    - can only exclude keyword if no additional annotations included
-    - firstName is init as instance variable
+    * can exclude 'constructor' keyword if no additional annotations included
+    - firstName, fullTime init as instance properties for class
+
+    * by using this method, getters & setters are automatically created by Kotlin
+        - emp.firstName will call auto generated getter
+        - emp.firstName = "Bob" will call auto generated setter
+
+    * If want custom getter & setter for instance property, cannot use this method, must declare within class
 
     class Employee (val firstName: String, var fullTime: Boolean = true) { // fullTime property with default value true
 
     }
-
 
     // need to use 'constructor' keyword if 'protected' modifier used
     class Employee protected constructor (val firstName: String) {

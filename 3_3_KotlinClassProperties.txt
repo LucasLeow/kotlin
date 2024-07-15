@@ -1,0 +1,31 @@
+========================================================================================================================
+Instance Properties in Kotlin
+========================================================================================================================
+
+    - instance properties are default public (if no access modifier specified)
+    * in Kotlin, if property declared private, no way to modify from outside class (even with setter)
+        - Kotlin rule states that getter & setter must have same visibility as property itself (or less permissive visibility)
+
+
+========================================================================================================================
+Instance properties with custom getter / setter
+========================================================================================================================
+
+    * custom getter / setter for a property must be declared right immediately after property declaration
+
+    class Employee(val firstName: String, fullTime: Boolean = true) {
+
+        var fullTime: Boolean = fullTime // instance property declaration
+        get() {
+            println("Running custom get for fullTime property")
+            return field // field identifier to return the backing field for 'fullTime' property
+            // emp.fullTime will run custom get() to get value
+        }
+        set(value) {
+            println("running custom set for fullTime property")
+            field = value // field identifier to set backing field for 'fullTime property'
+            // emp.fullTime = false will call the custom setter to set value
+        }
+    }
+
+    * backing field is not required if modification is not performed on value
