@@ -1,0 +1,53 @@
+========================================================================================================================
+Kotlin Access Modifier
+========================================================================================================================
+
+    - 4 visibility modifier
+
+    Top Level Modifier:
+        - public (visible everywhere)
+        - private (visible within same file)
+        - protected (can't be used in kotlin)
+        - internal (visible within module)
+
+    Class members (properties & methods) Modifier:
+        - public (visible everywhere)
+        - private (visible within same file)
+        - protected
+        - internal (visible within same module as class)
+
+    - top-level items are public by default in Kotlin
+        - kotlin default : public
+        - java default : protected (only within package)
+
+    * Kotlin gt no matching requirements for class name & file name
+        - therefore can have unlimited public class within single Kotlin file
+
+    * Java class name & file name must match
+        - therefore, only can have single public class
+
+    * Kotlin allow classes to be private
+        - everything in the same file can be accessed
+
+    * Java does not allow classes to be private
+
+========================================================================================================================
+Kotlin compilation of access modifier (to JVM)
+========================================================================================================================
+        Kotlin -> Java
+        -----------------------
+        private -> protected
+        internal -> public
+
+        * if mix Kotlin & Java in same file, can lead to Java being able to access things it shouldn't be allowed to access
+
+        eg:
+            - internal member in Kotlin (only within same module)
+            - internal is compiled to public in JVM
+            - any Java code can access internal member of Kotlin (that was previously marked internal)
+
+========================================================================================================================
+Kotlin Module
+========================================================================================================================
+
+    - group of kotlin files compiled together

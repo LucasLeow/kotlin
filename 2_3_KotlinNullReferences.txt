@@ -3,12 +3,12 @@ Kotlin Null References
 ========================================================================================================================
 
     * Java has many if-checks to prevent NPE
-    * Kotlin aims to make code more concise
-    * Best practice in kotlin is to avoid declaring nullable types unless absolutely have to
+    * Kotlin aims to make code more concise when handling NPEs
+    * There are nullable & non-nullable types in Kotlin (declared with '?')
+    * Best practice in Kotlin is to avoid declaring nullable types unless absolutely have to
         - val myNullable: Int? = bankBranch?.bankCode ?: 0 // default value is 0 if null
 
     eg:
-
         val countryCode: String? = bankBranch?.address?.country?.countryCode
             - instead of having 3 if checks
             - short circuits & returns null so long as null encountered
@@ -18,7 +18,7 @@ Kotlin Null References
         - need to perform null check then can perform standard non-nullable actions
 
 ========================================================================================================================
-Kotlin Nullable vs Non-Nullable variables
+Kotlin Nullable vs Non-Nullable dtype
 ========================================================================================================================
 
     - nullable specified with '?' after data type
@@ -26,7 +26,7 @@ Kotlin Nullable vs Non-Nullable variables
     val nullableStr: String? = "This string is nullable"
     val nonNullableStr: String = "This string is not nullable"
 
-    * Nullable & Non-nullable dtypes are distinct types
+    * Nullable & Non-Nullable dtypes are distinct types
 
 ========================================================================================================================
 Null Check Method 1: (using if block) - Not concise
@@ -51,7 +51,7 @@ Null Check Method 2: (Safe-call operator) - recommended way
     println(str?.toUpperCase())
 
 ========================================================================================================================
-Elvis operator
+Elvis operator (provide default value for null)
 ========================================================================================================================
 
     - denoted by '?:'
@@ -60,7 +60,6 @@ Elvis operator
     - if providing default value, then var will not be nullable type
 
     eg:
-
 
         val str2: String = bankBranch?.address ?: "This is default value if null"
 
@@ -100,8 +99,10 @@ Not-Null assertion
 'let' expression to handle Nullables
 ========================================================================================================================
 
-        - function takes in non-nullable string
-        - can pass nullable string to function using 'let' expression
+    scenario:
+        - a function takes in non-nullable String
+        - our variable is a nullable String
+        - can pass nullable String to function using 'let' expression
         - 'let' requires a lambda expression within braces
 
     fun printText(text: String) {
