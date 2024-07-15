@@ -1,0 +1,80 @@
+========================================================================================================================
+Kotlin Classes
+========================================================================================================================
+
+    - all classes are public & final by default
+
+    * constructor declared outside braces is known as primary constructor
+
+    - init block is not constructor
+        - executes when instance created
+        - used in conjunction with primary constructor
+        - can be considered the body for the primary constructor
+        - can have multiple init block within single class
+
+
+
+
+========================================================================================================================
+Method 1 of primary constructor for Kotlin Classes (long way)(not recommended)
+========================================================================================================================
+
+    class Employee constructor(firstName: String) {
+
+        val firstName: String
+
+        init {
+            this.firstName = firstName
+        }
+    }
+
+========================================================================================================================
+Method 2 of primary constructor for Kotlin classes (without init block) (direct init)
+========================================================================================================================
+
+    class Employee constructor(firstName: String) {
+        val firstName: String = firstName
+    }
+
+========================================================================================================================
+Method 3 of primary constructor for Kotlin classes (direct init in constructor arg)
+========================================================================================================================
+
+    * can even exclude the 'constructor' keyword
+    - can only exclude keyword if no additional annotations included
+    - firstName is init as instance variable
+
+    class Employee (val firstName: String, var fullTime: Boolean = true) { // fullTime property with default value true
+
+    }
+
+
+    // need to use 'constructor' keyword if 'protected' modifier used
+    class Employee protected constructor (val firstName: String) {
+
+    }
+
+========================================================================================================================
+Secondary constructor ('constructor' keyword within class block) (not recommended unless absolutely needed)
+========================================================================================================================
+
+    class Employee(val firstName: String) { // firstName is the primary constructor (direct init)
+
+        var fullTime: Boolean = true // instance variable with default value set to true
+
+        constructor(firstName: String, fullTime: Boolean): this(firstName) { // secondary constructor
+        // this(firstName) is to pass firstName variable into primary constructor
+        // primary constructor must always be called in secondary constructor
+            this.fullTime = fullTime // secondary constructor used to init fullTime property
+        }
+    }
+
+     * can have secondary constructor without primary constructor
+
+     class Demo {
+        val dummy: String = "default value"
+
+        constructor(d: String) {
+            dummy = d
+        }
+     }
