@@ -89,6 +89,23 @@ Spread operator
     printCarColors(*carArray)
 
 ========================================================================================================================
+Kotlin Extension Functions
+========================================================================================================================
+
+    - add functions to a certain class, especially if no access to open source library classes
+
+    eg: (extending the Int class by adding doubleNumber method)
+
+
+    fun Int.doubleNumber(): Int {
+        return this * 2
+    }
+
+    val myNumber = 2
+    println(myNumber.doubleNumber())
+
+
+========================================================================================================================
 Kotlin methods
 ========================================================================================================================
 
