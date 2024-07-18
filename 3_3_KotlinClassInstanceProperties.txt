@@ -2,7 +2,7 @@
 Instance Properties in Kotlin
 ========================================================================================================================
 
-    - instance properties are default public (if no access modifier specified)
+    - instance properties are public and final by default  (if no access modifier specified)
     * in Kotlin, if property declared private, no way to modify from outside class (even with setter)
         - Kotlin rule states that getter & setter must have same visibility as property itself (or less permissive visibility)
 

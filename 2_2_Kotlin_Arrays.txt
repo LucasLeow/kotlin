@@ -122,3 +122,18 @@ Array of Nulls
     - need to use arrayOfNulls
 
     val nullableInts = arrayOfNulls<Int>(5)
+
+========================================================================================================================
+Spread operator
+========================================================================================================================
+
+    - breaks up elements within Array into single elements
+    - useful for passing into function that takes in arbitrary arguments (vararg)
+    - specified using '*'
+
+    - can use spread operator to combine multiple arrays into single array
+
+    val carArray = arrayOf(c1, c2, c3)
+    printCarColors(*carArray)
+
+    val bigCarArray = arrayOf(*carArray, car4, car5)

@@ -1,11 +1,26 @@
 ========================================================================================================================
-Kotlin Functions
+Kotlin Functions (block functions)
 ========================================================================================================================
+
+    - Default return type for Kotlin functions is "Unit" (don't have to explicitly specify)
+    - "Unit" means void in Java (nothing is returned)
+    - if want to return something, need to specify type
+    - return type is always specified at the end of function syntax
 
     fun double(x: Int): Int {
         return 2 * x
     }
 
+
+    fun labelMultiply(n1: Int, n2: Int, s1: String): String {
+        return ("$s1 : ${n1 * n2}")
+    }
+
+========================================================================================================================
+Kotlin Functions with default values
+========================================================================================================================
+
+    * parameter type must always be specified even with default values
 
     fun read(
         b: ByteArray,
@@ -15,3 +30,67 @@ Kotlin Functions
         ...
 
     }
+
+========================================================================================================================
+Function expressions
+========================================================================================================================
+
+    - function will return whatever is after the equal sign
+    - can even remove return type because compiler will infer return type
+    - function expressions are used for single line code
+
+        fun labelMultiply(n1: Int, n2: Int, s1: String): String = "$s1 : ${n1 * n2}"
+
+
+        fun labelMultiply(n1: Int, n2: Int, s1: String) = "$s1 : ${n1 * n2}"
+
+========================================================================================================================
+Calling Kotlin functions (named arguments)
+========================================================================================================================
+
+    - can specify arguments when calling functions / methods
+    - by specifying arguments, dont have to arrange arguments in order
+    - by specifying arguments, have to specify for all arguments of a function
+
+    eg:
+
+        fun labelMultiply(n1: Int, n2: Int, s1: String): String {
+            return ("$s1 : ${n1 * n2}")
+        }
+
+        labelMultiple(s1="This is my String", n2=5, n1=2)
+
+========================================================================================================================
+Arbitrary arguments
+========================================================================================================================
+
+    - using 'vararg' keyword
+    - can only have 1 vararg for each function
+    - can have other params with 'vararg' (but need to use named arguments)
+        - else, compiler wouldn't know which argument should be used for vararg
+
+    fun printColors(vararg cars: Car, n1: Int, s1: String) {
+        for (car in cars) {
+            println(car.color)
+        }
+    }
+
+    printColors(car1, car2, car3, n1=5, s1="hello")
+
+========================================================================================================================
+Spread operator
+========================================================================================================================
+
+    - breaks up elements within Array into single elements
+    - useful for passing into function that takes in arbitrary arguments (vararg)
+    - specified using '*'
+
+    val carArray = arrayOf(c1, c2, c3)
+    printCarColors(*carArray)
+
+========================================================================================================================
+Kotlin methods
+========================================================================================================================
+
+    - methods are functions within classes
+    - all methods in Kotlin classes are public & final by default
