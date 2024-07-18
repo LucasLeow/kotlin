@@ -37,7 +37,7 @@ Data Classes
         - will not have extra functionality methods created for those properties
 
     Requirements for Data classes:
-        - primary constructor at least 1 parameter
+        - primary constructor at least 1 parameter (instance variable)
         - all primary constructors params must be marked with 'val' or 'var'
         - cannot be abstract, sealed or have inner classes
 
