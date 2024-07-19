@@ -104,6 +104,24 @@ Kotlin Extension Functions
     val myNumber = 2
     println(myNumber.doubleNumber())
 
+========================================================================================================================
+Kotlin Inline Functions
+========================================================================================================================
+
+    * use 'inline' keyword before 'fun' keyword
+
+    - when compiled, function body is directly substituted for function call
+    - not compiled to function, compiled to its body
+    - typically used when a function parameter takes in lambda expression
+        - lambda expression creates a class & instance under the hood
+
+    - not all functions can be in-line (depends on the parameters used)
+        - compiler might recommend if there are performance benefit to in-lining a function
+    - JVM might inline certain functions automatically for optimization
+
+    eg:
+
+        inline fun labelMultiply(n1: Int, n2: Int, label: String="Default Label") =
 
 ========================================================================================================================
 Kotlin methods
