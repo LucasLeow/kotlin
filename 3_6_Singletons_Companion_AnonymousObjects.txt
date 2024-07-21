@@ -112,3 +112,31 @@ Kotlin Companion Object Use 2 (factory pattern - used to call private constructo
                     }
 
                 }
+
+
+========================================================================================================================
+Kotlin Companion Object Use 3 (object expression - Anonymous object)
+========================================================================================================================
+
+    - directly implement the object class within function argument
+    - instance creating within function argument is not a singleton (used and discarded)
+        - new instance created every function call
+
+    * variables from main() method can be referenced within Anonymous object expression
+
+
+            fun main(args: Array<String>) {
+
+                var outsideVariable: Int = 22
+
+                wantsSomeInterface(object: SomeInterface {
+                    override fun mustImplementFunction(num: Int) {
+                        println(outsideVariable) // outside Variable can be accessed within object expression
+                        return "This is from mustImplement ${num * 100}"
+                    }
+                })
+            }
+
+            fun wantsSomeInterface(si: SomeInterface) {
+                println("Printing from wantsSomeInterface ${si.mustImplementFunction(22)}")
+            }
