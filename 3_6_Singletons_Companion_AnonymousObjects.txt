@@ -1,3 +1,6 @@
+
+    * singletons implemented using "object" keyword
+    * private static / factory pattern implement using "companion object" block
 ========================================================================================================================
 Kotlin Singletons
 ========================================================================================================================
@@ -7,16 +10,105 @@ Kotlin Singletons
     - will not have constructor because object instances are declared and created at the same time
     - object classes can extend other classes & implement interfaces
 
-    import java.time.Year
 
-    fun main(args: Array<String>) {
-        println(CompanyCommunications.getTagLine())
-        println(CompanyCommunications.getCopyrightLine())
-    }
+            import java.time.Year
 
-    object CompanyCommunication{
-        val currentYear = Year.now().value
+            fun main(args: Array<String>) {
+                println(CompanyCommunications.getTagLine())
+                println(CompanyCommunications.getCopyrightLine())
+            }
 
-        fun getTagLine() = "Our Company rocks!"
-        fun getCopyrightLine() = "Copyright \u00A9 $currentYear Our Company. All rights reserved."
-    }
+            object CompanyCommunication{
+                val currentYear = Year.now().value
+
+                fun getTagLine() = "Our Company rocks!"
+                fun getCopyrightLine() = "Copyright \u00A9 $currentYear Our Company. All rights reserved."
+            }
+
+
+========================================================================================================================
+Kotlin Companion Object Use 1 (access methods / properties without creating instance of class)
+========================================================================================================================
+
+    - no 'static' keyword in kotlin
+    - not possible to access methods / properties within kotlin classes that's meant to be "static" without instance of class
+        - always need instance of class to access properties / methods
+
+
+    Solution:
+        - companion object
+        - create companion objects inside classes
+        - can access companion objects without needing instance of class
+        - can consider everything inside companion object block to be static
+
+        - need to use <class>.Companion.<method_name> to access method within companion object block
+        - can remove Companion (Compiler can auto infer, but good to include to be clear to other devs)
+
+
+                fun main(args: Array<String>) {
+
+                    println(SomeClass.Companion.accessPrivateStaticVar())
+                }
+
+                class SomeClass {
+                    companion object {
+                        private var supposedPrivateStaticVar = 6
+
+                        fun accessPrivateStaticVar() = "I'm accessing private static var: $supposedPrivateStaticVar"
+                    }
+                }
+
+
+    * can specify names for companion object then use the custom name to access method / properties
+
+                    fun main(args: Array<String>) {
+
+                        println(SomeClass.SomeCustomCompanion.accessPrivateStaticVar())
+                    }
+
+                    class SomeClass {
+                        companion object SomeCustomCompanion{
+                            private var supposedPrivateStaticVar = 6
+
+                            fun accessPrivateStaticVar() = "I'm accessing private static var: $supposedPrivateStaticVar"
+                        }
+                    }
+
+========================================================================================================================
+Kotlin Companion Object Use 2 (factory pattern - used to call private constructors)
+========================================================================================================================
+
+    * 2nd use case of companion objects is to implement factory design pattern
+
+    Factory Pattern = class with methods returning instance of classes
+        - constructor must be made private
+        - cannot instantiate instance of class except by calling the factory methods
+
+    - create methods within companion object block to return instance of class (factory pattern)
+
+
+                fun main(args: Array<String>) { // to create instance of SomeClass, must call factory methods
+
+                    val someClass1 = SomeClass.justAssign("basic creation")
+                    val someClass2 = SomeClass.upperOrLowerCase("upper", false)
+
+                }
+
+                class SomeClass private constructor(val someString: String) { // private constructor to make class factory pattern
+
+                    companion object {
+
+                        fun justAssign(str: String) {
+                            SomeClass(str)
+                        }
+
+                        fun upperOrLowerCase(str: String, lowerCase: Boolean) {
+                            if (lowerCase) {
+                                return SomeClass(str.toLowerCase())
+                            }
+                            return SomeClass(str.toUpperCase())
+                        }
+
+                    }
+
+                }
