@@ -1,0 +1,22 @@
+========================================================================================================================
+Kotlin Singletons
+========================================================================================================================
+
+    - used when only want single instance of class at any point in time
+    - using 'object' instead of 'class' declaration
+    - will not have constructor because object instances are declared and created at the same time
+    - object classes can extend other classes & implement interfaces
+
+    import java.time.Year
+
+    fun main(args: Array<String>) {
+        println(CompanyCommunications.getTagLine())
+        println(CompanyCommunications.getCopyrightLine())
+    }
+
+    object CompanyCommunication{
+        val currentYear = Year.now().value
+
+        fun getTagLine() = "Our Company rocks!"
+        fun getCopyrightLine() = "Copyright \u00A9 $currentYear Our Company. All rights reserved."
+    }
