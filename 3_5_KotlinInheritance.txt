@@ -11,7 +11,11 @@ Kotlin Inheritance
 
     - if want to override parent class methods, need to use 'open' at parent method & 'override' at child method
 
+    - specify explicitly 'final' if want a certain method / class to not be extensible / overriden
 
+
+========================================================================================================================
+Inheritance with primary constructor
 ========================================================================================================================
 
     abstract class Printer(val modelName: String) {
@@ -21,10 +25,37 @@ Kotlin Inheritance
 
     }
 
-    class LaserPrinter(modName: String): Printer(modName) {
+    open class LaserPrinter(modelName: String, ppm: Int): Printer(modelName) {
         // modName is taken as argument to be passed to parent class to be initialized
 
-        override fun printModel() = println("The model name of this laser printer is $modelName")
+        final override fun printModel() = println("The model name of this laser printer is $modelName")
 
         override fun bestSellingPrice(): Double = 129.99
+    }
+
+    class SpecialLaserPrinter(modelName: String, ppm: Int): LaserPrinter(modelName, ppm) {
+
+    }
+
+
+========================================================================================================================
+Inheritance with secondary constructor
+========================================================================================================================
+
+    * if primary constructor used, cannot use secondary constructor
+
+    open class ParentClass {
+        val parentProperty: String
+
+        constructor(pProp: String) {
+            parentProperty = pProp
+            println("Parent secondary constructor")
+        }
+    }
+
+    class ChildClass: ParentClass {
+
+        constructor(pProp: String): super(pProp) {
+            println("Child secondary constructor")
+        }
     }

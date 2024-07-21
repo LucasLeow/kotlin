@@ -41,6 +41,8 @@ Data Classes
         - all primary constructors params must be marked with 'val' or 'var'
         - cannot be abstract, sealed or have inner classes
 
+    * Data classes are closed-type (cannot be extended) (cannot be abstract)
+        - can extend from other classes, cannot be extended
     eg:
 
         fun main(args: Array<String>) {
