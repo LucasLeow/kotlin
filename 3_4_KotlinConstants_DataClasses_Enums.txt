@@ -53,3 +53,23 @@ Data Classes
         data class Car(val color: String, val model: String, val year: Int) {
 
         }
+
+========================================================================================================================
+Kotlin Enums
+========================================================================================================================
+
+    - when adding function to enum, need to add ';' after last enum value
+
+
+        fun main(args: Array<String>) {
+            println(Department.ACCOUNTING.getDeptInfo())
+        }
+
+        enum class Department(val fullName: String, val numEmployees: Int) {
+            HR("Human Resources", 5),
+            IT("Information Technology", 10),
+            ACCOUNTING("Accounting", 3),
+            SALES("Sales", 20);
+
+            fun getDeptInfo() = "The $fullName department has $numEmployees employees"
+        }
