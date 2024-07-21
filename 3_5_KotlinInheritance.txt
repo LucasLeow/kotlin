@@ -1,0 +1,30 @@
+========================================================================================================================
+Kotlin Inheritance
+========================================================================================================================
+
+    - every class is public & final by default
+    - final classes cannot be inherited
+    - need to use 'open' keyword
+    - if use 'abstract' keyword, then don't need 'open'
+        - compiler can infer that abstract classes / methods needs to be extended
+        - still need override keyword if overriding methods
+
+    - if want to override parent class methods, need to use 'open' at parent method & 'override' at child method
+
+
+========================================================================================================================
+
+    abstract class Printer(val modelName: String) {
+        open fun printModel() = println("The model name of this printer is $modelName")
+
+        abstract fun bestSellingPrice(): Double
+
+    }
+
+    class LaserPrinter(modName: String): Printer(modName) {
+        // modName is taken as argument to be passed to parent class to be initialized
+
+        override fun printModel() = println("The model name of this laser printer is $modelName")
+
+        override fun bestSellingPrice(): Double = 129.99
+    }

@@ -2,6 +2,10 @@
 Kotlin Access Modifier
 ========================================================================================================================
 
+    * Everything is public & final by default in Kotlin
+        - Classes | properties | methods
+        - Top level functions
+
     - 4 visibility modifier
 
     Top Level Modifier:
