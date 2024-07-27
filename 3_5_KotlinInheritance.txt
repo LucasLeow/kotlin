@@ -23,6 +23,10 @@ Inheritance with primary constructor
 
         abstract fun bestSellingPrice(): Double
 
+        open fun printDescription() {
+            println("Printer is model: $modelName")
+        }
+
     }
 
     open class LaserPrinter(modelName: String, ppm: Int): Printer(modelName) {
@@ -31,6 +35,11 @@ Inheritance with primary constructor
         final override fun printModel() = println("The model name of this laser printer is $modelName")
 
         override fun bestSellingPrice(): Double = 129.99
+
+        override fun printDescription() {
+            super.printDescription()
+            println("Laser Printer has ppm of: $ppm")
+        }
     }
 
     class SpecialLaserPrinter(modelName: String, ppm: Int): LaserPrinter(modelName, ppm) {
@@ -42,7 +51,7 @@ Inheritance with primary constructor
 Inheritance with secondary constructor
 ========================================================================================================================
 
-    * if primary constructor used, cannot use secondary constructor
+    - if both primary & secondary constructor used, need to delegate back to primary constructor
 
     open class ParentClass {
         val parentProperty: String
@@ -59,3 +68,17 @@ Inheritance with secondary constructor
             println("Child secondary constructor")
         }
     }
+
+    eg:
+
+        class MountainBike(var seatHeight: Int, cadence: Int, speed: Int, gear: Int = 10):
+            Bicycle(cadence, speed, gear) {
+
+                constructor(seatHeight: Int, cadence: Int, speed: Int, gear: Int, color: String):
+                    this(seatHeight, cadence, speed, gear) // delegating back to primary constructor
+                    println("This is the color in the secondary constructor $color")
+
+                companion object {
+                    val availColors = listOf("blue", "red", "green")
+                }
+            }
