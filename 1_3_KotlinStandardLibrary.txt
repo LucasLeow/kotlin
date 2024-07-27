@@ -1,9 +1,0 @@
-========================================================================================================================
-Kotlin Standard Library
-========================================================================================================================
-
-    - kotlin programs import whole bunch of stuff by default
-    - kotlin standard library = whole bunch of stuff
-        - Data types classes
-        - bunch of APIs that can be called to perform common functionalities
-        annotations | collections | comparisons | ranges | io | sequences | text | jvm | lang

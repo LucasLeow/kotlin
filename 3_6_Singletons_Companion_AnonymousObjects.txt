@@ -1,6 +1,7 @@
 
     * singletons implemented using "object" keyword
     * private static / factory pattern implement using "companion object" block
+
 ========================================================================================================================
 Kotlin Singletons
 ========================================================================================================================

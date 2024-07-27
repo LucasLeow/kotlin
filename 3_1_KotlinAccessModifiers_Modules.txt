@@ -55,3 +55,5 @@ Kotlin Modules
 ========================================================================================================================
 
     - group of kotlin files compiled together
+    - "src" is an example of a module
+    - module is not a package, have to specifically create another module

@@ -1,0 +1,44 @@
+========================================================================================================================
+Kotlin Standard Library
+========================================================================================================================
+
+    - kotlin programs import whole bunch of stuff by default
+    - kotlin standard library = whole bunch of stuff
+        - Data types classes
+        - bunch of APIs that can be called to perform common functionalities
+        annotations | collections | comparisons | ranges | io | sequences | text | jvm | lang
+
+========================================================================================================================
+Kotlin Imports (Class / Object, Toplevel function, whole package)
+========================================================================================================================
+
+    - kotlin doesn't require package name to match (recommended to match package name)
+
+    import package.name.Class // import single class
+        - import java.util.Scanner
+
+    import package.name.topLevelFunction // import top-level function in Kotlin
+
+    import package.name.* // import whole package
+        - import java.util.*
+
+    import package.name.enum.* // import entire enum
+
+========================================================================================================================
+Kotlin Imports (Another module)
+========================================================================================================================
+
+    - need to specify dependency between modules in order for Classes / functions to be used between modules
+
+    1. right click module -> Open Module Settings -> Dependencies tab -> Add -> Module Dependency -> <Select desired module>
+    2. import package.name.topLevelFunction // add import statement
+
+========================================================================================================================
+Renaming imports (using "as" keyword)
+========================================================================================================================
+
+    - good to prevent import name clashes (2 classes having same name from different source)
+
+    import package.name.Class as desiredName
+    import package.name.topLevelFunction as tp
+    import package.name.extensionFunction
