@@ -50,6 +50,9 @@ Method 3 of primary constructor (direct init in primary constructor) (recommende
 
     class Employee (val firstName: String, var fullTime: Boolean = true) { // fullTime property with default value true
 
+        fun greet(greeting: String) {
+            println("$greeting $firstName!")
+        }
     }
 
     // need to use 'constructor' keyword if 'protected' modifier used
