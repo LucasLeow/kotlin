@@ -1,6 +1,6 @@
 package learnKotlin
 
-class Bicycle(var cadence: Int, var speed: Int, var gear: Int) {
+open class Bicycle(var cadence: Int, var speed: Int, var gear: Int) {
 
     fun applyBrake(decrement: Int) {
         speed -= decrement
