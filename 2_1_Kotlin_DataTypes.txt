@@ -11,6 +11,10 @@ Kotlin Data types
         * need to use toFloat() | toInt() etc. to cast
 
 
+    checking type in kotlin:
+
+        println(varName.javaClass)
+
 
 ========================================================================================================================
 Whole numbers (Int)

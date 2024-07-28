@@ -1,0 +1,124 @@
+========================================================================================================================
+Range Operator
+========================================================================================================================
+
+
+    val range = 1..5 // inclusive of start & end i.e 1 to 5
+    val backwardRange = 5.downTo(1) // downwards range
+    val reverseRange = range.reversed()
+
+    val stepRange = 3..15 // specify initial range first
+    val stepThree = stepRange.step(3) // in steps of 3
+
+    val charRange = 'a'..'z'
+    val stringRange = "ABC".."XYZ" // cannot loop through string ranges (not iterator)
+
+========================================================================================================================
+For Loops
+========================================================================================================================
+
+    - while & do-while loop same syntax as java
+    - for loop different in kotlin
+
+
+        val range = 1..5 // inclusive of start & end i.e 1 to 5
+
+        for (i in range) {
+            print(i)
+        }
+
+        -----------------------------------------
+        Direct Range
+        -----------------------------------------
+            for (i in 1..5) {
+                println(i)
+            }
+
+            // until excludes end (i.e 1 to 9)
+            for (i in 1 until 10 {
+                println(i)
+            }
+
+        -----------------------------------------
+        Step loop
+        -----------------------------------------
+            for (num in 1..20 step 4) {
+                println(num)
+            }
+
+        -----------------------------------------
+        Downwards loop
+        -----------------------------------------
+            for (i in 20 downTo 15) {
+                println(i)
+            }
+
+            for (i in 20 downTo 10 step 2) {
+                println(i)
+            }
+
+        -----------------------------------------
+        Loop thru char in String
+        -----------------------------------------
+            val str = "Hello"
+            for (c in str) {
+                println(c)
+            }
+
+            val sRange = 0..str.length
+            for (i in sRange) {
+                println(str[i])
+            }
+
+        -----------------------------------------
+        'in' Operator
+        -----------------------------------------
+
+            println('e' in str) // true
+            println('e' !in str) // false
+
+        -----------------------------------------
+        Loop through arrays
+        -----------------------------------------
+
+            val seasons = ["Spring", "Summer", "Fall", "Winter"]
+            for (season in seasons) {
+                println(season)
+            }
+
+            for (idx in seasons.indices) {
+                println("${seasons[idx]} is idx number $idx")
+            }
+
+        -----------------------------------------
+        Named for loops
+        -----------------------------------------
+
+        for (i in 1..3) {
+            jLoop@ for (j in 1..4) {
+                for (k in 5..10) {
+                    if (k == 7) {
+                        break@jLoop // break out of k & j loop
+                        // continue@jLoop // also works for continue instead of breaking
+                    }
+                }
+            }
+        }
+
+========================================================================================================================
+forEach loop
+========================================================================================================================
+
+    - can be used with all collections
+
+        val seasons = ["Spring", "Summer", "Fall", "Winter"]
+
+        seasons.forEach {
+            println(it)
+        }
+
+        seasons.forEachIndexed {
+            idx, val -> println("val = $val | idx = $idx")
+        }
+
+

@@ -1,0 +1,46 @@
+========================================================================================================================
+Kotlin if expression
+========================================================================================================================
+
+    - in Kotlin, 'if' can evaluate to a value
+    - ternary operator does not exist in Kotlin
+        - because 'if' statement can return a value, thus acting as a ternary operator
+
+    * can have if block that returns nothing
+        - last statement will be the return value, don't need to specify 'return' keyword
+
+    * if using as expression, need to have else block
+
+
+    eg:
+
+        ---------------------------------------------
+        less verbose example
+        ---------------------------------------------
+
+            val someCondition = true
+            val num = if (someCondition) 50 else 100
+
+
+        ---------------------------------------------
+        more verbose example
+        ---------------------------------------------
+
+        val num = if (someCondition) {
+            println("condition met")
+            50 // return value
+        } else {
+            println("condition unmet")
+            100 // return value
+        }
+
+
+        println(
+        if (someCondition) {
+                            println("condition met")
+                            50 // return value
+                        } else {
+                            println("condition unmet")
+                            100 // return value
+                        }
+                )
