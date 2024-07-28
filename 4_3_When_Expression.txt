@@ -1,0 +1,96 @@
+=======================================================================================================================
+Kotlin When expression
+=======================================================================================================================
+
+    - switch statement on steroids
+    - no 'break' statement required
+    - cannot allow multiple cases to execute without 'break' keyword
+        - only can execute single case in 'when' expression
+
+    - when expression can return values (i.e can also assign expression variable)
+
+    * when expressions are used frequently with enums
+
+    eg:
+
+
+        val num = 200
+
+        val x = 30
+
+        when(num) {
+            100, 600 -> println("100 or 600") // if 100 or 600 will execute the following
+            200 -> println("200")
+            in 300..399 -> println("in range of 300 to 399")
+            x + 370 -> println("variable evaluation is also possible")
+            else -> println("Doesn't match any value")
+        }
+
+=======================================================================================================================
+When expression (for type checking)
+=======================================================================================================================
+
+
+    val obj1 : Any = 45
+
+    val something: Any = obj1
+
+    when (something) {
+        is String -> println("something is a string")
+        is BigDecimal -> println(something.remainder(BigDecimal(10.5))
+        is Int -> println("something is Integer")
+    }
+
+=======================================================================================================================
+When expression (returning values)
+=======================================================================================================================
+
+    val resultString = when (something) {
+        is String -> {
+            println("something is string")
+            "returning this String"
+        }
+
+        is BigDecimal -> {
+            println("something is BigDecimal")
+            "returning this BigDecimal string"
+        }
+
+        else -> {
+            "returning this string that doesn't match any type"
+        }
+    }
+
+=======================================================================================================================
+When expression (with enums)
+=======================================================================================================================
+
+    * enums do not require 'else' statement if all enum values are specified (compiler will check)
+
+    enum class Season {
+        SPRING, SUMMER, FALL, WINTER
+    }
+
+    fun main(args: Array<String>) {
+        val timeOfYear = Season.WINTER
+
+        val str = when (timeOfYear) {
+            Season.SPRING -> "Flowers are blooming"
+            Season.SUMMER -> "Its hot!"
+            Season.FALL -> "Its getting cooler"
+            Season.WINTER -> "Its cold!"
+        }
+
+        println(str)
+    }
+
+=======================================================================================================================
+When expression (to replace 'if' statements)
+=======================================================================================================================
+
+
+    when {
+        num < num2 -> println("num is less than num2")
+        num > num2 -> println("num is greater than num2")
+        else -> println("num equals num2")
+    }
