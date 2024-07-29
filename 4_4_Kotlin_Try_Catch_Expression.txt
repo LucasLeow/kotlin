@@ -1,0 +1,27 @@
+=======================================================================================================================
+Try-Catch expression
+=======================================================================================================================
+
+    - can use try-catch as expression (returns a value)
+    * kotlin does not distinguish between checked & unchecked exceptions
+
+    - last statement in try-catch block would be return value
+    - finally block does not require a return value (finally block will not return any value)
+        - only try & catch require return value
+
+    eg:
+
+        fun main(args: Array<String>) {
+            println(parseNumber("22.5") ?: "Number is not an Int") // elvis operator to do sth else if null
+        }
+
+        fun parseNumber(str: String): Int? { // nullable Integer
+            return try {
+                Integer.parseInt(str) // returns this if try succeeds
+            } catch (e: NumberFormatException) {
+                null // returns null if number format exception
+            } finally {
+                println("In the finally block")
+            }
+        }
+
