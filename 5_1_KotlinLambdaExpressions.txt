@@ -1,0 +1,79 @@
+=======================================================================================================================
+Kotlin Lambda Expressions
+=======================================================================================================================
+
+    - must be written within '{}'
+    - can be saved into variables
+    - can be called directly using run {}
+
+    * lambdas are typically used with Collections
+    * can move lambda out of parameter if its the only parameter accepted by function
+        - i.e dont need to put method parenthesis
+        eg:
+
+            employees.minBy { e -> e.startYear }
+
+            instead of
+
+            employees.minBy({ e -> e.startYear })
+
+=======================================================================================================================
+Example
+=======================================================================================================================
+
+    val employees = listOf(
+        Employee("John", "Smith", 2012),
+        Employee("Jane", "Wilson", 2015),
+        Employee("Mary", "Johnson", 2010),
+        Employee("Mike", "Jones", 2002)
+    )
+
+    println(employees.minBy {e -> e.startYear}) // print employee with minimum start year
+
+    println(employees.minBy {e: Employee -> e.startYear}) // sometimes compiler unable to infer type, need to explicit declare
+
+    println(employees.minBy { it.startYear }) // compiler can infer from single argument (employee)
+
+=======================================================================================================================
+Lambda scoping
+=======================================================================================================================
+
+    - lambdas can access local variables if variables are declared before lambdas
+    - if lambdas used within function, lambdas can also access function parameters
+        - but cannot change function parameters because taken as 'val' (i.e only can use)
+
+    * different from java, where only final local variables can be access within lambdas & anonymous classes
+
+=======================================================================================================================
+Member references
+=======================================================================================================================
+
+    - can use member reference inplace of lambdas:
+    - still can use lambdas, not necessarily have to use strictly member reference
+    - depends on dev team & best practices set by team
+
+        1. when lambda only use to access property
+
+            eg:
+                // only accessing property, so use member reference instead of lambdas
+                println(employees.minBy( Employee::startYear ))
+
+        2. lambda using top level function that doesnt take in any parameters
+
+            eg:
+
+                fun topLevel() = println("I am a top level function without parameters")
+
+                // using run for lambda expression & :: for top level function
+                run(::topLevel)
+
+=======================================================================================================================
+run {}
+=======================================================================================================================
+    - to quickly execute lambda expressions
+
+    eg:
+
+        run {
+            println("Im in a lambda")
+        }

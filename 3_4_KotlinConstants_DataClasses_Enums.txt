@@ -20,7 +20,7 @@ Data Classes
 
     - data class have extra functionality from Kotlin
 
-        - toString()
+        - toString() automatically generated
 
         - .equals() & .hashcode()
             - .equals() is structural equality for data classes by default
