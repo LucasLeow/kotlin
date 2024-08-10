@@ -1,0 +1,82 @@
+=======================================================================================================================
+Kotlin Collections
+=======================================================================================================================
+
+    - mostly uses Java Collection classes
+    - may have some additional features
+    - has mutable & immutable collections
+
+    - when manipulating collections, the resultant will always be a new instance
+    - all Collections take a generic type (Covariant)
+    - covariant collections are read-only (immutable)
+    - all read-only interfaces are covariant
+        - can assign a list of 'BigDecimals' to a list of 'Any'
+        - because BigDecimal is subclass of Any
+
+    - public interface Collection<out E> : Iterable<E> {}
+        - <out E> signify covariant
+
+
+    * if not covariant, then cannot assign subclass to parent class
+        - eg: MutableCollection<E> : Collection<E>, MutableIterables<E> {}
+            - cannot assign MutableCollection of BigDecimal to MutableCollection of Any
+
+    - 'Collection' interface implement by List & Set
+    - 'Collection' implements Iterable
+
+
+    * Arrays in Kotlin is in the kotlin package, not in the kotlin.collections package
+        - does not implement any of the Collections interfaces
+        - can be considered a standalone collection
+
+=======================================================================================================================
+Note on Kotlin & Java List Interoperability
+=======================================================================================================================
+
+    * kotlin is enforcing immutability using interface definitions
+        - if pass instance of immutable collection to Java code, the immutability will be gone
+        - java code can modify collection
+
+=======================================================================================================================
+Kotlin List (dynamic array)
+=======================================================================================================================
+
+    // Creating Immutable Java List
+    val seasons = listOf("spring", "summer", "fall", "winter")
+    println(seasons.javaClass) // java.util.Arrays$ArrayList - cannot add / remove but can manipulate existing elements in Java
+        - immutable in Kotlin doesnt guarantee immutability in Java
+
+    // Immutable Empty Kotlin list
+    val emptyList = emptyList<String>()
+    println(emptyList.javaClass) // kotlin.collections.EmptyList
+
+    // Immutable Kotlin list that doest not accept nulls
+    val notNullList = listOfNotNull("hello", null, "goodbye")
+    println(notNullList) // [hello, goodbye], null will not be included
+
+
+    // creating a mutable Java List
+    val arrayList = arrayListOf(1, 2, 4)
+    println(arrayList.javaClass) // java.util.ArrayList
+
+    // creating mutable Kotlin List
+    val mutableList = mutableListOf<Int>(1, 2, 3)
+    println(mutableList.javaClass) // java.util.ArrayList
+    mutableList[1] = 20
+    mutableList.set(<idx>, <val>)
+
+=======================================================================================================================
+Kotlin Array to List
+=======================================================================================================================
+
+    val colorArr = arrayOf("Black", "White", "Green")
+
+    // both method works
+    val colorList = listOf(*colorArr)
+    val colorList = array.toList()
+
+    * same method can be used for special Primitive Arrays (built to match Java primitives)
+    eg:
+
+        val ints = intArrayOf(1, 2, 3)
+        println(ints.toList()) // converts special Primitive Array to List
