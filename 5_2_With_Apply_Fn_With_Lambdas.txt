@@ -1,0 +1,56 @@
+=======================================================================================================================
+'with' function + Lambda
+=======================================================================================================================
+
+    - requires an object to be passed into with(<object>) to use it as context
+    - can help reduce the amt of code to be written
+
+    fun countTo100(): String {
+
+        val numbers = StringBuilder()
+        return with(numbers) {
+            // don't need to mention 'numbers' when calling method, typically need numbers.append(i)
+            for (i in 1..99) {
+                append(i)
+                append(", ")
+                println(this) // refers to 'numbers' (instance passed to with function)
+            }
+            append(100)
+            toString()
+        }
+    }
+
+
+
+Less Verbose Example: (function expression) (more "kotlin" like)
+
+    fun countTo100() = with(StringBuilder()) {
+        for (i in 1..99) {
+            append(i)
+            append(", ")
+        }
+
+        append(100)
+        toString()
+    }
+
+=======================================================================================================================
+'apply' function + lambda
+=======================================================================================================================
+
+    - works similar to 'with' but always return receiver obj
+    - use the obj (context) to call .apply() method
+    - lambda expression is also passed to apply()
+    - resultant obj (after lambda applied) will be returned
+
+    eg:
+
+        // StringBuilder() is the obj to be used as context
+        fun countTo100() = StringBuilder().apply() {
+            for (i in 1..99) {
+                append(i) // similar to StringBuiler().append(i)
+                append(", ")
+            }
+
+            append(100)
+        }.toString() // toString() called outside lambda as the obj is always returned from apply function

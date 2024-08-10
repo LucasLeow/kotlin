@@ -1,0 +1,30 @@
+=======================================================================================================================
+label return block (return from lambda nested within function but not from function)
+=======================================================================================================================
+
+    - when lambda nested within function & 'return' used, it causes the function to return as well
+
+    eg:
+
+        fun findByLastName(employees: List<Employee>, lastName: String) {
+
+            employees.forEach returnBlock@ {
+                if (it.lastName == lastName) {
+                    println("Yes, there's an employee with last name $lastName")
+                    return@returnBlock // return at labelled returnBlock
+                }
+
+            println("No, there's no employee with last name $lastname")
+            }
+        }
+
+=======================================================================================================================
+labelling function calls
+=======================================================================================================================
+
+    "Some String".apply labelledString@ {
+        "Another String".apply {
+            println(toLowerCase()) // 'Another String' inferred, dunnid use 'this'
+            println(this@labelledString.toUpperCase()) // to use labelled context
+        }
+    }
