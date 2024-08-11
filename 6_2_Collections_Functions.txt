@@ -1,0 +1,34 @@
+=======================================================================================================================
+Collection Functions
+=======================================================================================================================
+
+    - kotlin has added some functions that can be used for collections
+    * some fns directly manipulate existing list, some returns a new list
+
+
+    val myCollection = listOf("black", "white", "red")
+
+    1. get last element of collection (sometimes, unsure what is last element idx, so use method)
+        myCollection.last()
+
+    2. reverse collection
+        myCollection.asReversed()
+
+    3. getting element from idx else return null
+        myCollection.getOrNull(<idx>)
+
+    4. get max value
+        myCollection.max()
+
+    5. list of pairs (zip creates pair elements) (good for joining first & last name)
+        collection1.zip(collection2)
+
+    6. combining 2 lists (incld duplicates)
+        collection1 + collection2
+
+    7. combining 2 lists (without duplicates)
+        collection1.union(collection2)
+
+    8. removing duplicates from list
+        uniqueCollection = collection1.distinct()
+
