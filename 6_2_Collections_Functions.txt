@@ -32,3 +32,100 @@ Collection Functions
     8. removing duplicates from list
         uniqueCollection = collection1.distinct()
 
+    9. Sorting hashmap by key
+        immutableMap.toSortedMap()
+
+=======================================================================================================================
+Collection functions with lambda exp.
+=======================================================================================================================
+
+    * recall:
+        - all lambdas must be within {}
+        - if lambda is the only argument for a function, then don't need parenthesis for function call
+
+    * can chain filter & map methods together
+
+    ------------------------------------------------------------------
+    filter
+    ------------------------------------------------------------------
+
+        - filtering returns new instance of resultant collection
+
+        myCollection.filter { it % 2 != 0 }
+            - if predicate true, returns to new set
+
+        myMap.filter { it.value.year == 2016 }
+            - filter by value
+
+    ------------------------------------------------------------------
+    map
+    ------------------------------------------------------------------
+
+        - manipulating every element in collection (eg: adding 10 to each element)
+        - map() returns a new instance of collection (doesn't directly manipulate original collection
+
+        val manipulatedCollection = myCollection.map { it + 10 }
+
+        val onlyYears = carCollection.map { it.value.year } // creates a collection of only the years
+
+    ------------------------------------------------------------------
+    all
+    ------------------------------------------------------------------
+
+        - check if every element in collection passes a certain condition
+        - returns true only if every element passes, else false
+
+        // check if the year of every car is greater than 2014
+        val areCarsModern = carCollection.all { it.value.year > 2014 }
+
+    ------------------------------------------------------------------
+    any
+    ------------------------------------------------------------------
+
+        - check if any element in collection passes condition
+        - returns true so long as 1 element passes
+
+        // check if at least 1 car is modern
+        val atLeastOneModern = carCollection.any { it.value.year > 2014 }
+
+    ------------------------------------------------------------------
+    count
+    ------------------------------------------------------------------
+
+        - count no. of occurrences of a given condition
+
+        val numModernCars = carCollection.count { it.value.year > 2014 }
+
+    ------------------------------------------------------------------
+    find
+    ------------------------------------------------------------------
+        - only works for List
+        - convert to List then perform find
+
+        val cars = carCollection.values // convert map to list
+        cars.find { it.year > 2014 }
+            - search for first item that satisfy condition then stops
+
+    ------------------------------------------------------------------
+    groupBy
+    ------------------------------------------------------------------
+        - group elements based on certain criteria
+        - works for list
+        - returns a hashmap, key as category, value as list of objs satisfying condition
+
+        cars.groupBy { it.color }
+
+    ------------------------------------------------------------------
+    sortedBy
+    ------------------------------------------------------------------
+        - sort element by certain value
+
+        // sort list of car objs by year
+        cars.sortedBy { it.year }
+
+    ------------------------------------------------------------------
+    Chaining methods
+    ------------------------------------------------------------------
+
+        // get all Ford cars color into a new collection
+        val fordCarColors = myCollection.filter { it.value.model == "Ford" }.map { it.value.color }
