@@ -1,0 +1,77 @@
+=======================================================================================================================
+Kotlin Maps
+=======================================================================================================================
+
+    - can have mutable / immutable maps
+    - key-value pair
+
+    * LinkedHashMap have predictable iteration order (Kotlin prefers predictable order)
+        - can easily convert between list, set & map
+
+    // type typically need not be included as it is usually inferred by compiler
+    // Creating immutable map
+    val immutableMap = mapOf<Int, Car>(
+        <key> to <value>
+        1 to Car("Green", "Toyota", 2015),
+        2 to Car("Blue", "Ford", 2017)
+    )
+
+    println(immutableMap) // java.util.LinkedHashMap
+
+
+    // Creating mutable map
+    val mutableMap = mutableMapOf<String, Car>(
+        "John's Car" to Car("Green", "Toyota", 2015),
+        "Tom's Car" to Car("Blue", "Ford", 2017)
+    )
+
+    println(mutableMap) // java.util.LinkedHashMap
+
+
+    // Creating mutable HashMap
+    val mutableHashMap = hashMapOf<String, Car>(
+        "John's Car" to Car("Green", "Toyota", 2015),
+        "Tom's Car" to Car("Blue", "Ford", 2017)
+    )
+
+    println(mutableHashMap) // java.util.HashMap
+
+    mutableHashMap.put("Mary's Car", Car("Red", "Toyota", 2020))
+
+
+=======================================================================================================================
+Destructuring declarations
+=======================================================================================================================
+
+    - used typically for pair values (key-value etc.)
+    - can be used with Maps
+
+    * need to implement ComponentFunctions to allow destructuring
+        - Pair & Map classes implements the ComponentFunctions, thus allowing for destructuring
+
+    // Traditional Way
+    val pair = Pair(10, "ten")
+    val firstValue = pair.first
+    val secondValue = pair.second
+
+    // Destructuring declaration
+    val (firstValue, secondValue) = pair
+
+
+    for ((k, v) in mutableMap) {
+        println("Key: $k | Value: $v")
+    }
+
+=======================================================================================================================
+Custom Destructuring
+=======================================================================================================================
+
+    class Car(val color: String, val model: String, val year: Int) {
+        operator fun component1() = color
+        operator fun component2() = model
+        operator fun component3() = year
+    }
+
+    val car = Car("Blue", "Corvette", 1960)
+    val (c, m, y) = car
+    println("Color: $c | Model: $m | Year: $y")

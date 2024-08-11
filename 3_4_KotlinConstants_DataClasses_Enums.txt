@@ -31,6 +31,8 @@ Data Classes
             eg: car3 = car1.copy(year=2016, color="green") // create a new car instance with some property modified
                 - property name must be similar to the 1 declared within data class
 
+        - also has component functions auto implemented (can use destructuring without implement component functions)
+
     * can override method as required
 
     * can declare additional properties outside of primary constructor

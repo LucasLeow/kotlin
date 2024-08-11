@@ -4,7 +4,7 @@ Kotlin Collections
 
     - mostly uses Java Collection classes
     - may have some additional features
-    - has mutable & immutable collections
+    - has mutable & immutable Lists
 
     - when manipulating collections, the resultant will always be a new instance
     - all Collections take a generic type (Covariant)
