@@ -1,0 +1,67 @@
+=======================================================================================================================
+Kotlin Sequences
+=======================================================================================================================
+
+    - to prevent problem of new collections being returned upon executing collection functions
+    - eg:
+        - filter returns new collection of results
+        - if collection is large, or if many method chains, causes huge memory overhead
+
+
+    - or when unsure how large collection will be (retrieving results from db query)
+
+    - sequences = streams in Java
+    - Kotlin created sequences because Java streams not supported older versions of Java
+
+
+    * Each element in sequence is handled individually before passing on to next step in chain
+        - instead of entire collection before evaluated
+        - no need to create intermediate resultant collection
+
+    * no size in sequences (continuous stream of elements)
+
+    * can convert large collection to sequence
+        - only want to convert large collection because collections in kotlin is very efficient
+        - dont need sequence unless collection very large
+
+
+    eg:
+
+        myCollection.asSequence().filter { it.value.model == "Ford" } .map { it.value.color }
+        // create a new sequence of Ford colors
+
+    * When working with collections, its best to filter first then perform mapping for efficiency
+    * When working with sequences, order of method doesn't matter since each element processed individually
+
+=======================================================================================================================
+Operations on Sequences
+=======================================================================================================================
+
+    - can perform 2 types of operations on Sequences
+
+        1. Intermediate operations
+            - returns another sequence to be processed by next method
+            - intermediate sequences are lazy (evaluated only when terminal operation executed)
+
+            eg: .filter() | .map() are all intermediate operations (returns a sequence)
+
+        2. Terminal operations
+            - does not return sequence
+            - terminates the chain
+            - causes all lazy operations to be evaluated
+
+            eg: .toList()
+
+
+        eg:
+
+            listOf("Joe", "Mary", "Jane").asSequence()
+                .filter { println("filtering $it"); it[0] == 'J'} // performing filter & passing predicate using ';'
+                .map { println("mapping $it"); it.toUpperCase() } // performing map % passing predicate
+                .toList() // passing terminal operation, else println() wouldn't do anything
+
+
+            listOf("Joe", "Mary", "Jane").asSequence()
+                .filter { println("filtering $it"); it[0] == 'J'} // performing filter & passing predicate using ';'
+                .map { println("mapping $it"); it.toUpperCase() } // performing map % passing predicate
+                .find { it.endsWith('E') } // evaluate until found, then terminates (not all elements needs to be processed)
