@@ -1,0 +1,19 @@
+=======================================================================================================================
+Kotlin Sets
+=======================================================================================================================
+
+    - similar to Lists but doesn't have duplicates
+    - under the hood is LinkedHashSet
+
+    // Create immutable set
+    val setInts = setOf(10, 15, 19, 5, 3, -22)
+    setInts.plus(20) // add element to set (returns a new instance of set)
+    setInts.minus(19) // removes element from set (returns a new instance of set)
+
+    setInts.average() // get average of set
+    setInts.drop(3) // drop first 3 elements in set
+
+
+    // Create mutable set
+    val mutableInts = mutableSetOf(1, 2, 3, 4, 5)
+    mutableInts.plus(10) // add element to set (returns a new instance of set)
