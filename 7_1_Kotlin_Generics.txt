@@ -1,0 +1,50 @@
+=======================================================================================================================
+Kotlin Generics
+=======================================================================================================================
+
+    - give compiler hint on what type of object its dealing with
+    - typically used with Collections
+    - also helps with error checking during compile time
+
+    * Kotlin requires generic for collection (java doesn't)
+
+
+    eg:
+
+        val words: MutableList<String> = mutableListOf("Hello")
+
+
+        fun printCollection(collection: List<String>) {
+            for (item in collection) {
+                println(item)
+            }
+        }
+
+=======================================================================================================================
+Generic type (any type)
+=======================================================================================================================
+
+        - must specify <T> beside fun to indicate using generic type
+            - known as type parameter declaration
+
+    fun <T> printCollection(collection: List<T>) {
+        for (item in collection) {
+            println(item)
+        }
+    }
+
+=======================================================================================================================
+Function extension with Generics
+=======================================================================================================================
+
+    - recap: Function extension = adding own custom method to built-in / imported classes
+        - 'this' is used to refer to the object calling the method
+
+    * extension function should be used when method is commonly used
+    * or when you want to make method available for use in your dev team
+
+    fun <T> List<T>.printCollection() {
+        for (item in this) {
+            println(item)
+        }
+    }
