@@ -1,0 +1,75 @@
+=======================================================================================================================
+Kotlin Functions with Generics (with specific condition)
+=======================================================================================================================
+
+    * If unspecified, "Any?" is default (accepts both null & non-null)
+
+    eg: function that takes in collection of Numbers
+        - Byte | Short | Int | Long | Float
+
+    fun <T: Number> convertToInt(collection: List<T>) {
+        for (n in collection) {
+            println("${n.toInt()}")
+        }
+    }
+
+
+    // if only want non-nullable types, need to specify "Any"
+    fun <T: Any> printCollection(collection: List<T>) {
+        for (item in collection) {
+            println(item)
+        }
+    }
+
+
+=======================================================================================================================
+Kotlin Functions with Generics & parameters & custom specified type
+=======================================================================================================================
+
+    - using 'where' clause to specify acceptable T types (aka upper bounds)
+
+    fun <T> append(item1: T, item2: T)
+        where T: CharSequence, T: Appendable {
+            println("Result is ${item1.append(item2)}")
+        }
+
+=======================================================================================================================
+Type Erasure
+=======================================================================================================================
+
+    - Generics info are erased during runtime. (Generics are compile time feature)
+    - When Java app runs, it doesnt have any Generic info (known as Type Erasure)
+    - eg: during compile time ArrayList<BigDecimal> but during runtime, only see ArrayList
+    - thus, cannot use Generics to perform type-checking
+
+        eg: boolean b = strings instanceof List<String> // this is illegal
+
+
+=======================================================================================================================
+Type checking in kotlin
+=======================================================================================================================
+
+    ---------------------------------------------------------
+    Example 1: Inferred type during compiling in Kotlin
+    ---------------------------------------------------------
+
+        val strings = listOf("1", "2", "3")
+
+        // this is valid in Kotlin because compiler infers List<String>
+        if (strings is List<String>) {
+            println("This list contains string")
+        }
+
+    ---------------------------------------------------------
+    Example 2: Star projection syntax
+    ---------------------------------------------------------
+
+        - Kotlin requires Generic specified for collections
+        - if a collection is of type any, have to use star projection
+
+        val listAny: Any = listOf("1", "2", "3")
+
+        if (listAny is List<*>) {
+            val strList = listAny as List<String> // use 'as' syntax so can perform String ops
+            println(strList[0].toUpperCase())
+        }
