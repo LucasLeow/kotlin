@@ -1,0 +1,64 @@
+=======================================================================================================================
+Kotlin Covariance
+=======================================================================================================================
+
+    - want to make mutable list of 'Short' be a subtype of mutable list of 'Number'
+    - Collection interface is Covariant (Sub-typing preserved)
+    - MutableCollection interface is not Covariant (Sub-typing not preserved)
+
+    * If class is invariant, then sub-typing is not preserved
+
+
+    eg:
+
+        fun tendGarden(roseGarden: Garden<Rose>) {
+            waterGarden(roseGarden) // Type mismatch (Expects Garden<Flower>, Found Garden<Rose>)
+        }
+
+        fun waterGarden(garden: Garden<Flower>) {
+
+        }
+
+        open class Flower {
+
+        }
+
+        class Rose: Flower() {
+
+        }
+
+        class Garden<T: Flower> { // this class is invariant, subclasses of Flower will not be accepted
+            // problem: will only accept Garden<Flower>, does not accept Garden<Rose> | Garden<Daffodil> etc.
+        }
+
+=======================================================================================================================
+Solution To make class co-variant
+=======================================================================================================================
+
+    - by making co-variant, it allows sub-typing
+        - i.e allow the accepting of subclasses of Flower
+
+    - covariance brings along certain restrictions
+        - can only use in 'out' positions
+            - function parameters are considered 'in' position
+                - (element: @UnsafeVariance E) can be used to override if function does not add to Collection
+            - function return types are considered 'out'
+
+
+    class Garden<out T: Flower> { // using 'out' keyword, makes the class covariant
+
+        val flowers: List<T> = listOf()
+
+        // return flower @ specified index
+        fun pickFlowers(i: Int): T = flowers[i] // valid because return types considered out position
+
+        fun plantFlowers(flower: T) { // invalid because function parameter considered 'in' position
+            // don't allow flowers of different type to be added
+        }
+    }
+
+
+    * Constructor parameters don't have in / out positions
+        - can always accept covariant class as parameter (in constructors)
+
+
