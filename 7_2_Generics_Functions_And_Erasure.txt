@@ -73,3 +73,26 @@ Type checking in kotlin
             val strList = listAny as List<String> // use 'as' syntax so can perform String ops
             println(strList[0].toUpperCase())
         }
+
+=======================================================================================================================
+Reified Parameters
+=======================================================================================================================
+
+    - Function parameters that prevent type from being erased during runtime
+    - can use generic to check for type during runtime
+    * Have to use inline function & specify the function as reified
+    - only use reification if want to check type inside a function
+    - cannot use reified for Classes, properties, non-inline functions
+
+    eg:
+
+        inline fun <reified T> getElementsOfType(list: List<Any>): List<T> {
+
+            var newList: MutableList<T> = mutableListOf()
+            for (element in list) {
+                if (element is T) {
+                    newList.add(element)
+                }
+            }
+            return newList
+        }
