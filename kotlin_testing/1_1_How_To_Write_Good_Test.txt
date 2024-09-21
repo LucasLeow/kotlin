@@ -1,0 +1,36 @@
+===========================================================================================
+Test-Driven Development
+===========================================================================================
+
+    - write test case before implementation of function (only for unit tests)
+
+
+    Steps:
+        1. Write function signature (without body)
+        2. Write test cases for that function (test cases should all fail initially)
+        3. Write function logic so that all tests passes
+    
+    * best case is to only have 1 assertion per test case
+        - sometimes may require multiple assertions, its fine
+    
+    * never make the outcome of a test dependent on the outcome of another test
+
+
+===========================================================================================
+What makes a good test case
+===========================================================================================
+
+    1. Scope    
+        - how much code is covered in test case
+    2. Speed
+        - how fast test case run
+    3. Fidelity
+        - how realistic a test is to a real scenario
+
+    * Wants to prevent flaky tests (sometimes succeeds, sometimes fails)
+
+===========================================================================================
+How many test case to write
+===========================================================================================
+
+    - As little as necessary but sufficient to cover all cases

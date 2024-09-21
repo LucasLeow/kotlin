@@ -1,0 +1,49 @@
+===========================================================================================
+Taking Context for Unit Test (receiving external obj for testing  )
+=========================================================================================== 
+
+    - wants each test to be independent (not using the same object)
+    - therefore, not desireable to init an obj to be shared amongst test (not independent)
+        - any test that utilize obj will change its state
+        - other test using same obj will have different behaviour
+        - causes flaky test
+    
+    eg:
+
+        class ResourceComparerTest {
+            private val resourceComparer = ResourceComparer() // not desireable because obj init statically
+
+            @Test
+            fun test1() {
+                val result = resourceComparer.isEqual(<value1>, <value2>)
+                resourceComparer.add(<new_val>) // alters the obj, may affect test2
+            }
+
+            @Test
+            fun test2() {
+                val result = resourceComparer.isEqual(<val1>, <val2>)
+            }
+        }
+
+    ---------------------------------------
+    Solution - setup function
+    ---------------------------------------
+        - logic to execute before the launch of every test case
+
+        @Before - methods annotated are run before each test (JUnit4)
+        @BeforeClass - execute only once before running all test
+
+        @BeforeEach - same as @Before but in JUnit5
+        @BeforeAll - same as @BeforeClass but in JUnit5
+
+        @AfterEach - method run after each test completed
+        @AfterAll - method run after all test completed
+
+        * function naming convention
+            Before - fun setup()
+            After - fun teardown()
+            
+        @BeforeEach
+        fun setup() {
+            resourceComparer = ResourceComparer()
+        }

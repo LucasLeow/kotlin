@@ -1,0 +1,24 @@
+===========================================================================================
+Kotlin Unit Test Syntax
+=========================================================================================== 
+    
+    - in kotlin, can write descriptive names between `` and is the convention in testing
+    - to indicate a function as test case, need to use @Test annotation
+    
+
+    class RegistrationUtilTest {
+
+        @Test
+        fun `empty username returns false`() {
+            val result = RegistrationUtil.validateRegistrationInput(
+                username="",
+                password="123",
+                confirmedpassword="123
+            )
+
+            assertThat(result).isFalse() // depending on <result>, assertThat can be chained with different methods
+            // common method is .isEqualTo(<desired_value>)
+        }
+    }
+
+
